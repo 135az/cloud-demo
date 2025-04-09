@@ -1,5 +1,7 @@
 package com.order.config;
 
+import feign.Logger;
+import feign.Retryer;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,4 +17,20 @@ public class ProductServiceConfig {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
+    /**
+     * 开启feign日志
+     *
+     * @return
+     */
+    @Bean
+    Logger.Level feignLoggerLevel() {
+        return Logger.Level.FULL;
+    }
+
+    // @Bean
+    Retryer retryer() {
+        return new Retryer.Default();
+    }
+
 }

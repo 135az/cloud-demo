@@ -1,6 +1,7 @@
 package com.order.controller;
 
 import com.order.Order;
+import com.order.properties.OrderProperties;
 import com.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,16 @@ public class OrderController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    private OrderProperties orderProperties;
+
+    @GetMapping("/getConfig")
+    public String getConfig() {
+        return "orderTimeout: " + orderProperties.getTimeout() +
+                ", orderAutoConfirm: " + orderProperties.getAutoConfirm() +
+                ", dbUrl: " + orderProperties.getDbUrl();
+    }
 
     @GetMapping("/create")
     public Order createOrder(@RequestParam("productId") Long productId, @RequestParam("userId") Long userId) {

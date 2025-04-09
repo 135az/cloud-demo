@@ -17,7 +17,12 @@ public class ProductServiceImpl implements ProductService {
         product.setNum(100);
         // 模拟被调用方出现异常
         // throw new RuntimeException("被调用方出现异常");
-
+        // 模拟API超时
+        // try {
+        //     TimeUnit.SECONDS.sleep(100);
+        // } catch (InterruptedException e) {
+        //     throw new RuntimeException(e);
+        // }
         return product;
     }
 }
