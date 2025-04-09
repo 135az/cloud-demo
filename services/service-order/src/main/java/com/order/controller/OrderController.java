@@ -31,5 +31,16 @@ public class OrderController {
         return orderService.createOrder(productId, userId);
     }
 
+    @GetMapping("/writeDb")
+    public String writeDb() {
+        return "writeDb success...";
+    }
+
+    @GetMapping("/readDb")
+    public String readDb() {
+        log.info("readDb success...");
+        return "readDb success...";
+    }
+
 
 }
